@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1f1420;
+    --bg-soft: #2c1b2e;
+    --ivory: #f2e9e4;
+    --muted: #b39da3;
+    --rose: #c97c82;
+    --gold: #d4af6a;
+    --line: rgba(242, 233, 228, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 28px;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/selfie-close.jpeg');
+    background-size: cover;
+    background-position: center 25%;
+    filter: blur(1px) saturate(0.9);
+    opacity: 0.34;
+    transform: scale(1.06);
+  }
+
+  .hero-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(31,20,32,0.55) 0%, rgba(31,20,32,0.86) 62%, var(--bg) 100%);
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 8vw, 68px);
+    font-style: italic;
+    line-height: 1.15;
+    max-width: 12ch;
+  }
+
+  .hero .and {
+    display: block;
+    font-size: 0.4em;
+    color: var(--gold);
+    font-style: normal;
+    margin: 6px 0;
+  }
+
+  .hero-sub {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 40ch;
+  }
+
+  .play-song {
+    margin-top: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(31,20,32,0.4);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--line);
+    color: var(--ivory);
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .play-song:hover {
+    border-color: var(--rose);
+    background: rgba(201,124,130,0.14);
+  }
+
+  .play-song .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--rose);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.25s ease;
+  }
+
+  .play-song .icon svg { width: 11px; height: 11px; }
+
+  .play-song.playing .icon { background: var(--gold); }
+
+  .song-caption {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    z-index: 1;
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  section { padding: 100px 0; }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(28px, 5vw, 38px);
+    font-style: italic;
+  }
+
+  .section-head p {
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--rose), var(--gold));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 56px;
+  }
+
+  .tl-item:last-child { margin-bottom: 0; }
+
+  .tl-item::before {
+    content: "♥";
+    position: absolute;
+    left: -34px;
+    top: -1px;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--rose);
+  }
+
+  .tl-date {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .tl-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .tl-item p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 52ch;
+  }
+
+  .tl-item strong { color: var(--ivory); font-weight: 500; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .g-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-soft);
+    aspect-ratio: 4 / 5;
+  }
+
+  .g-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .g-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .g-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 16px 14px 12px;
+    background: linear-gradient(to top, rgba(31,20,32,0.85), transparent);
+    font-size: 13px;
+    color: var(--ivory);
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing {
+    text-align: center;
+    padding: 100px 28px 120px;
+  }
+
+  .closing h2 {
+    font-size: clamp(26px, 5vw, 34px);
+    font-style: italic;
+    max-width: 20ch;
+    margin: 0 auto 20px;
+  }
+
+  .closing .signature {
+    margin-top: 30px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--rose);
+  }
+
+  hr.div {
+    border: none;
+    height: 1px;
+    background: var(--line);
+    margin: 0;
+  }
+
+  @media (max-width: 560px) {
+    .gallery { grid-template-columns: 1fr; }
+    .g-item.wide { grid-column: span 1; aspect-ratio: 4/5; }
+    .timeline { padding-left: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="eyebrow">♡ a small archive of us ♡</div>
+  <h1>Rohit<span class="and">&amp;</span>Preetu</h1>
+  <p class="hero-sub">Every good story needs a soundtrack. Here's ours — and let's start with your favorite song.</p>
+
+  <button class="play-song" id="playBtn" type="button">
+    <span class="icon">
+      <svg id="playIcon" viewBox="0 0 24 24" fill="#1f1420"><polygon points="5,3 19,12 5,21"></polygon></svg>
+    </span>
+    <span id="playLabel">Play our song</span>
+  </button>
+  <div class="song-caption">🎵 "Maaya" — Varsha Thapa</div>
+
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<div class="wrap">
+
+  <section id="timeline-section">
+    <div class="section-head">
+      <h2>How it started</h2>
+      <p>Two dates, one very good decision.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">November 1, 2025</div>
+        <h3>The first time I saw you</h3>
+        <p>We actually met before this day, online. From there, we became friends on Facebook, and little by little, you became someone I really admired. I was probably your biggest admirer without you even knowing how much I noticed and appreciated you.</p>
+        <p>But November 1, 2025 was different. It was the first time I finally saw you face to face. After knowing you online, seeing you standing right in front of me felt so special. And honestly, you looked even more beautiful than I had imagined. I still remember that moment, and I think I always will. ❤️</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">a peaceful day in Nagarkot</div>
+        <h3>Our day in Nagarkot</h3>
+        <p>One of the moments I'll always keep in my heart is the day we went to Nagarkot. The beautiful view, the peaceful sky, and the quiet moments we shared brought a kind of peace to my heart that I can't really explain.</p>
+        <p>But honestly, the view wasn't the most beautiful thing I saw that day. It was you. <strong>A beautiful view with a beautiful person beside me — what more could I ask for?</strong> ❤️</p>
+        <p>That day felt peaceful, simple, and special. It's one of those memories I wish I could go back to and live again.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">every day since</div>
+        <h3>Still choosing you</h3>
+        <p>Boat rides on quiet water, sunny afternoons that turned into golden evenings, and the kind of easy laughter that only happens with someone who feels like home. Every photo below is a small proof of that.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section id="gallery-section">
+    <div class="section-head">
+      <h2>Moments we kept till now ♡</h2>
+      <p>A few frames from Nagarkot, and everywhere after.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="g-item wide">
+        <img src="images/lake-view.jpeg" alt="Standing together by the lake at Nagarkot">
+        <div class="g-caption">Looking out at Nagarkot together</div>
+      </div>
+      <div class="g-item">
+        <img src="images/lake-embrace.jpeg" alt="Arm around each other by the water">
+      </div>
+      <div class="g-item">
+        <img src="images/boat.jpeg" alt="On the red boat at the lake">
+      </div>
+      <div class="g-item">
+        <img src="images/selfie-close.jpeg" alt="Close selfie under the leaves">
+      </div>
+      <div class="g-item">
+        <img src="images/top-down-selfie.jpeg" alt="Top-down selfie on the grass">
+      </div>
+      <div class="g-item">
+        <img src="images/fun.jpeg" alt="Fun times together">
+        <div class="g-caption">Making the best memories</div>
+      </div>
+      <div class="g-item">
+        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--rose), var(--gold)); color: var(--ivory); font-size: 20px; font-style: italic; text-align: center; padding: 20px;">
+          More memories to be made ♡
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="closing">
+    <h2>Among all the beautiful things life has given me, somehow, you are still my favorite. ❤️</h2>
+    <div class="signature">— by your mutu ♥</div>
+  </section>
+
+</div>
+
+<script>
+  const btn = document.getElementById('playBtn');
+  const label = document.getElementById('playLabel');
+  const icon = document.getElementById('playIcon');
+  const audio = new Audio('music/maaya.mp3');
+  let playing = false;
+
+  btn.addEventListener('click', () => {
+    if (playing) {
+      audio.pause();
+      audio.currentTime = 0;
+      playing = false;
+      label.textContent = 'Play our song';
+      icon.innerHTML = '<polygon points="5,3 19,12 5,21"></polygon>';
+    } else {
+      audio.play();
+      playing = true;
+      label.textContent = 'Pause song';
+      icon.innerHTML = '<rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect>';
+    }
+
+    btn.classList.toggle('playing', playing);
+  });
+
+  audio.addEventListener('ended', () => {
+    playing = false;
+    label.textContent = 'Play our song';
+    icon.innerHTML = '<polygon points="5,3 19,12 5,21"></polygon>';
+    btn.classList.remove('playing');
+  });
+</script>
+
+</body>
+</html>
